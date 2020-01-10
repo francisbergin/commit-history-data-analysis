@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+info="
+commit hash: %H
+author name: %an
+author email: %ae
+author date: %ad
+committer name: %cn
+committer email: %ce
+committer date: %cd
+ref names: %d
+subject: %s
+"
+
+# TODO: escape occasional newlines in these values
+#   body: %b
+#   commit notes: %N
+
+info=$(echo "${info}" | sed '1d;$d')
+header=$(echo "${info}" | sed -r 's/: %.*/","/' | tr -d '\n' | sed -e 's/..$//' -e 's/^/"/')
+placeholders=$(echo "${info}" | sed -r 's/.*: //' | tr '\n' ',' | sed -e 's/,/","/g' -e 's/..$//' -e 's/^/"/')
+
+echo $header
+git --no-pager log --pretty=tformat:"$placeholders" "$@"
