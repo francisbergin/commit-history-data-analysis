@@ -4,7 +4,7 @@
 
 This project contains scripts to aggregate and analyze git commit history. The `get-data.sh` script will scan a base directory for git repositories and will output their log in CSV format in the `data` directory. In the end, it will merge all results into the `data/results.csv` file. To analyze the resulting data, simply open Jupyter Notebook as indicated below and rerun the whole notebook.
 
-An article with discussions related to this project can be found here: https://berfr.me/posts/commit-history-data-analysis/.
+An article with discussions related to this project can be found here: https://francisbergin.github.io/posts/commit-history-data-analysis/.
 
 ## Instructions
 
